@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 
 /**
- *
+ * 16/09/2019
  * @author dinho
  */
 public class Teste {
@@ -14,11 +14,11 @@ public class Teste {
         ArrayList<Double> longUsuario = new ArrayList<>();
         PontosNoRaio pn = new PontosNoRaio();
 //  --------------------------------------------------------------------------------------------------------------------------------------------------------        
-        latUsuario.addAll(pn.lerArquivo("C:\\Users\\dinho\\Downloads\\Testes OoO Cametá\\Testes OoO Cametá\\Teste 1 (ufpa-centro)\\testeLat.txt"));
+        latUsuario.addAll(pn.lerArquivo("caminho do arquivo .txt"));
         pn.limpar();
-        longUsuario.addAll(pn.lerArquivo("C:\\Users\\dinho\\Downloads\\Testes OoO Cametá\\Testes OoO Cametá\\Teste 1 (ufpa-centro)\\testeLong.txt"));
+        longUsuario.addAll(pn.lerArquivo("caminho do arquivo .txt"));
 //  --------------------------------------------------------------------------------------------------------------------------------------------------------        
-        for(int i = 0; i < longUsuario.size(); i++){
+        for(int i = 0; i < longUsuario.size(); i++){ //                       ..., latitude área, longitude área, tamanho do raio
             boolean estaNoRaio2 = pn.estaNoRaio(latUsuario.get(i), longUsuario.get(i), -2.2338789, -49.494298, 1.5);
             if(estaNoRaio2){
                 System.out.println("O ponto " + (i+1) + " tá no raio dado");
