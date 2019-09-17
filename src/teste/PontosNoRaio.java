@@ -7,7 +7,7 @@ import java.util.Scanner;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * 16/09/2019
  * @author dinho
  * R = earth’s radius (mean radius = 6,371km)
    Δlat = lat2− lat1
@@ -17,19 +17,18 @@ import javax.swing.JOptionPane;
    d = R.c
  */
 public class PontosNoRaio {
-    double distanciaLat;
-    double distanciaLong;
-    double latDentroRaio;
-    double longDentroRaio;
-    double distancia;
-    final int R = 6371; // Raio da Terra
-    ArrayList<Double> arq = new ArrayList<>();
-    String buffer;
-//    ArrayList<String> teste = new ArrayList<>();
-    int index = 0;
+    private double distanciaLat;
+    private double distanciaLong;
+    private double latDentroRaio;
+    private double longDentroRaio;
+    private double distancia;
+    private final int R = 6371; // Raio da Terra
+    private ArrayList<Double> arq = new ArrayList<>();
+    private String buffer;
+    private int index = 0;
     
     // Uso da Fórmula de Haversine para achar a distância entre dois pontos
-    public Double Haversine(double lat1, double long1,double lat2, double long2){
+    private Double Haversine(double lat1, double long1,double lat2, double long2){
         latDentroRaio = lat1;
         longDentroRaio = long1;
         distanciaLat = Math.toRadians(lat2 - lat1);
@@ -56,13 +55,14 @@ public class PontosNoRaio {
         }
     }
     
-    //método para pegar o conteúdo dentro de um arquivo .txt (pode ser usados outros arquivos se os número de coordenadas forem organizado como 
-    //                                                                                                                latitude longitude
-    //                                                                                                                latitude longitude
-    //                                                                                                                latitude longitude
-    //                                                                                                                        .
-    //                                                                                                                        .
-    //                                                                                                                        .
+    //método para pegar o conteúdo dentro de um arquivo .txt (pode ser usados outros
+    //arquivos se os número de coordenadas forem organizado como 
+    //                                latitude longitude
+    //                                latitude longitude
+    //                                latitude longitude
+    //                                         .
+    //                                         .
+    //                                         .
     public ArrayList<Double> lerArquivo(String caminhoArq){
         
         try {
@@ -82,6 +82,7 @@ public class PontosNoRaio {
         return arq;
     }
     
+//    método para limpar o ArrayList
     public void limpar(){
         arq.clear();
     }
