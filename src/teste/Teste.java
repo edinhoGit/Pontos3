@@ -19,7 +19,7 @@ public class Teste {
         longUsuario.addAll(pn.lerArquivo("caminho do arquivo .txt"));
 //  --------------------------------------------------------------------------------------------------------------------------------------------------------        
         for(int i = 0; i < longUsuario.size(); i++){ //                       ..., latitude área, longitude área, tamanho do raio
-            boolean estaNoRaio2 = pn.estaNoRaio(latUsuario.get(i), longUsuario.get(i), -2.2338789, -49.494298, 1.5);
+            boolean estaNoRaio2 = pn.estaNoRaio(latUsuario.get(i), longUsuario.get(i), 0.0000, 0.0000, 0.0);
             if(estaNoRaio2){
                 System.out.println("O ponto " + (i+1) + " tá no raio dado");
             }
