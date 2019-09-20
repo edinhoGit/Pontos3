@@ -1,10 +1,6 @@
 package teste;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Scanner;
-import javax.swing.JOptionPane;
 
 /**
  * 16/09/2019
@@ -29,17 +25,16 @@ public class PontosNoRaio {
     
     // Uso da Fórmula de Haversine para achar a distância entre dois pontos
     private Double Haversine(double lat1, double long1,double lat2, double long2){
-        latDentroRaio = lat1;
-        longDentroRaio = long1;
-        distanciaLat = Math.toRadians(lat2 - lat1);
-        distanciaLong = Math.toRadians(long2 - long1);
-        Double a = Math.sin(distanciaLat / 2) * Math.sin(distanciaLat / 2) + 
+        setLatDentroRaio(lat1);
+        setLongDentroRaio(long1);
+        setDistanciaLat(Math.toRadians(lat2 - lat1));
+        setDistanciaLong(Math.toRadians(long2 - long1));
+        Double a = Math.sin(getDistanciaLat() / 2) * Math.sin(getDistanciaLat() / 2) + 
                    Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2)) * 
-                   Math.sin(distanciaLong / 2) * Math.sin(distanciaLong / 2);
+                   Math.sin(getDistanciaLong() / 2) * Math.sin(getDistanciaLong() / 2);
         Double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
         Double distanciaPontos = R * c;
-//        System.out.printf("A distância entre os pontos é de: %.3f Km\n", distanciaPontos);
-        distancia = distanciaPontos;
+        setDistancia(distanciaPontos);
         return distanciaPontos;
     }
     
@@ -47,43 +42,72 @@ public class PontosNoRaio {
     public Boolean estaNoRaio(double lat1, double long1, double lat2, double long2, Double raio){
         double resultado = Haversine(lat1, long1, lat2, long2);
         if(resultado <= raio){
-            System.out.printf("Latitude: " + latDentroRaio + ", Longitude: " + longDentroRaio + ", Distância: %.3f\n", distancia);
+            System.out.printf("%.3f: ", getDistancia());
             return true;
         } else {
-//            System.out.println("erro");
             return false;
         }
-    }
-    
-    //método para pegar o conteúdo dentro de um arquivo .txt (pode ser usados outros
-    //arquivos se os número de coordenadas forem organizado como 
-    //                                latitude longitude
-    //                                latitude longitude
-    //                                latitude longitude
-    //                                         .
-    //                                         .
-    //                                         .
-    public ArrayList<Double> lerArquivo(String caminhoArq){
-        
-        try {
-            File gpsUsuario = new File(caminhoArq);
-            Scanner scanner = new Scanner(gpsUsuario);
-            scanner.useDelimiter("\n");
-            while(scanner.hasNextLine()){
-                buffer = scanner.nextLine();
-                arq.add(index, Double.parseDouble(buffer));
-                index = index + 1;
-            }
-            index = 0;
-//            System.out.println("Tamanho: " + arq.size());
-        } catch (FileNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "Deu erro parente");
-        }
-        return arq;
-    }
-    
+    }    
 //    método para limpar o ArrayList
     public void limpar(){
         arq.clear();
     }
+
+    private double getDistanciaLat() {
+        return distanciaLat;
+    }
+
+    private void setDistanciaLat(double distanciaLat) {
+        this.distanciaLat = distanciaLat;
+    }
+
+    private double getDistanciaLong() {
+        return distanciaLong;
+    }
+
+    private void setDistanciaLong(double distanciaLong) {
+        this.distanciaLong = distanciaLong;
+    }
+
+    private double getLatDentroRaio() {
+        return latDentroRaio;
+    }
+
+    private void setLatDentroRaio(double latDentroRaio) {
+        this.latDentroRaio = latDentroRaio;
+    }
+
+    private double getLongDentroRaio() {
+        return longDentroRaio;
+    }
+
+    private void setLongDentroRaio(double longDentroRaio) {
+        this.longDentroRaio = longDentroRaio;
+    }
+
+    private double getDistancia() {
+        return distancia;
+    }
+
+    private void setDistancia(double distancia) {
+        this.distancia = distancia;
+    }
+
+    private String getBuffer() {
+        return buffer;
+    }
+
+    private void setBuffer(String buffer) {
+        this.buffer = buffer;
+    }
+
+    private int getIndex() {
+        return index;
+    }
+
+    private void setIndex(int index) {
+        this.index = index;
+    }
+    
+    
 }
