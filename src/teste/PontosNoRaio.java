@@ -19,12 +19,12 @@ public class PontosNoRaio {
     private double longDentroRaio;
     private double distancia;
     private final int R = 6371; // Raio da Terra
-    private ArrayList<Double> arq = new ArrayList<>();
+//    private ArrayList<Double> arq = new ArrayList<>();
     private String buffer;
     private int index = 0;
     
     // Uso da Fórmula de Haversine para achar a distância entre dois pontos
-    private Double Haversine(double lat1, double long1,double lat2, double long2){
+    public Double Haversine(double lat1, double long1,double lat2, double long2){
         setLatDentroRaio(lat1);
         setLongDentroRaio(long1);
         setDistanciaLat(Math.toRadians(lat2 - lat1));
@@ -42,16 +42,20 @@ public class PontosNoRaio {
     public Boolean estaNoRaio(double lat1, double long1, double lat2, double long2, Double raio){
         double resultado = Haversine(lat1, long1, lat2, long2);
         if(resultado <= raio){
-            System.out.printf("%.3f: ", getDistancia());
+//            System.out.printf("%.3f: ", getDistancia());
+//            System.out.println();
             return true;
         } else {
+//            System.out.println("fora");
             return false;
         }
-    }    
-//    método para limpar o ArrayList
-    public void limpar(){
-        arq.clear();
     }
+ 
+    
+//    método para limpar o ArrayList
+//    public void limpar(){
+//        arq.clear();
+//    }
 
     private double getDistanciaLat() {
         return distanciaLat;

@@ -49,6 +49,11 @@ public class PontosEspecificos {
     public void limpar(){
         arq.clear();
     } 
+    
+    private String concertarPalavra(String linha){
+        
+    return null;
+}
 
 // ----------------------------------------------------------------------------------------------------------------------------
 
